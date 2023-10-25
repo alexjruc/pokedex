@@ -1,5 +1,5 @@
 const paginateData = (items, currentPage) => {
-    const ITEMS_PER_PAGE = 20
+    const ITEMS_PER_PAGE = 24
 
     const sliceEnd = currentPage * ITEMS_PER_PAGE
     const sliceStart = sliceEnd - ITEMS_PER_PAGE

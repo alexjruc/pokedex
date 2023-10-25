@@ -34,18 +34,19 @@ const PokemonInfo = () => {
                                 .front_default
                         }
                         alt=""
-                        className="absolute w-[150px] -top-16 right-1/2 translate-x-1/2"
+                        className="absolute w-[150px] md:w-[250px] -top-16 right-1/2 translate-x-1/2"
                     />
                 </header>
-                <h3>#{pokemon?.id}</h3>
-                <h2 className="font-bold text-2xl">{pokemon?.name}</h2>
+                <h3 className="p-1 md:pt-24 md:text-xl">#{pokemon?.id}</h3>
+                
+                <h2 className="relative font-bold text-2xl md:text-3xl">{pokemon?.name}</h2>
 
-                <div className="flex justify-center gap-3">
-                    <p className="grid text-xs">
+                <div className="flex justify-center gap-3 py-6">
+                    <p className="grid text-xs md:text-base">
                         weight
                         <span className="font-bold">{pokemon?.weight}</span>
                     </p>
-                    <p className="grid text-xs">
+                    <p className="grid text-xs md:text-base">
                         height
                         <span className="font-bold">{pokemon?.height}</span>
                     </p>
@@ -96,7 +97,14 @@ const PokemonInfo = () => {
                 </section>
             </article>
 
-            <article></article>
+            <article className="max-w-[1000px] mx-auto border-2 flex gap-4 flex-wrap p-4 justify-start">
+                <h2 className="w-full text-2xl h-12">Movements</h2>
+                {
+                    pokemon?.moves.map((move) => (
+                        <li key={move.move.url} className="list-none border-2 py-1 px-2 bg-slate-300 rounded-2xl capitalize">{move.move.name}</li>
+                    ))
+                }
+            </article>
         </main>
     );
 };

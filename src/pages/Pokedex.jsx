@@ -35,9 +35,7 @@ const Pokedex = () => {
 
     const handleNextPage = () => {
         const newCurrentPage = currentPage + 1;
-        if (newCurrentPage <= lastPage) {
-            setCurrentPage(newCurrentPage);
-        }
+        setCurrentPage(newCurrentPage);
     };
 
     const handlePreviusPage = () => {
@@ -73,15 +71,17 @@ const Pokedex = () => {
     }, [currentType]);
 
     useEffect(() => {
-        setCurrentPage(1)
-    },[currentType])
+        setCurrentPage(1);
+    }, [currentType]);
 
     return (
         <main className="min-h-screen w-full bg-[#E3ECF2]">
             <Header />
-            <section className="grid justify-center items-center gap-4 px-4 py-10">
+            <section className="grid justify-center items-center gap-4 px-4 py-10 md:text-xl">
                 <p className="text-center">
-                    <span className="capitalize font-semibold text-[#D93F3F]">Bienvenido {trainerName}</span>
+                    <span className="capitalize font-semibold text-[#D93F3F]">
+                        Bienvenido {trainerName}
+                    </span>
                     , you can find your favorite pokemon here!
                 </p>
                 <form
@@ -112,10 +112,15 @@ const Pokedex = () => {
                     </select>
                 </form>
             </section>
-            <ul className="flex justify-center flex-wrap">
+            <ul className="flex justify-center gap-2">
                 {currentPage !== 1 && (
                     <li>
-                        <button onClick={handlePreviusPage} className="py-3 px-2 bg-red-600 text-white text-xs" >{"<<"}</button>
+                        <button
+                            onClick={handlePreviusPage}
+                            className="py-3 px-2 bg-red-600 text-white text-xs"
+                        >
+                            {"<<"}
+                        </button>
                     </li>
                 )}
                 {pagesInCurrentBlock.map((page) => (
@@ -132,11 +137,54 @@ const Pokedex = () => {
                         </button>
                     </li>
                 ))}
-                <li>
-                    <button onClick={handleNextPage} className="py-3 px-2 bg-red-600 text-white text-xs">{">>"}</button>
-                </li>
+                {currentPage !== lastPage && (
+                    <li>
+                        <button
+                            onClick={handleNextPage}
+                            className="py-3 px-2 bg-red-600 text-white text-xs"
+                        >
+                            {">>"}
+                        </button>
+                    </li>
+                )}
             </ul>
             <PokemosList pokemons={itemsInCurrrentPage} />
+            <ul className="flex justify-center gap-2 pb-8">
+                {currentPage !== 1 && (
+                    <li>
+                        <button
+                            onClick={handlePreviusPage}
+                            className="py-3 px-2 bg-red-600 text-white text-xs"
+                        >
+                            {"<<"}
+                        </button>
+                    </li>
+                )}
+                {pagesInCurrentBlock.map((page) => (
+                    <li key={page}>
+                        <button
+                            onClick={() => setCurrentPage(page)}
+                            className={`py-2 px-3  ${
+                                currentPage === page
+                                    ? "bg-red-600 text-white"
+                                    : "bg-white text-black"
+                            }`}
+                        >
+                            {page}
+                        </button>
+                    </li>
+                ))}
+                {currentPage !== lastPage && (
+                    <li>
+                        <button
+                            onClick={handleNextPage}
+                            className="py-3 px-2 bg-red-600 text-white text-xs"
+                        >
+                            {">>"}
+                        </button>
+                    </li>
+                )}
+            </ul>
         </main>
     );
 };
