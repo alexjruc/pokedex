@@ -66,7 +66,7 @@ const PokemonInfo = () => {
                         <h4>abilities</h4>
                         <ul className="flex justify-center gap-2">
                             {pokemon?.abilities.map((ability) => (
-                                <li className="border w-[100px] rounded-sm" key={ability.ability.url}>{ability.ability.name}</li>
+                                <li className="border w-[120px] rounded-sm" key={ability.ability.url}>{ability.ability.name}</li>
                             ))}
                         </ul>
                     </div>
