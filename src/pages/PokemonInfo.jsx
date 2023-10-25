@@ -24,7 +24,7 @@ const PokemonInfo = () => {
 
     console.log(pokemon);
     return (
-        <main >
+        <main className="pb-16">
             <Header />
             <article className="border-4 m-6 mt-16 pb-16 text-center capitalize max-w-[1000px] md:w-[700px] md:mx-auto md:mt-32 lg:w-[1000px]">
                 <header className={`h-24 ${bgByType[pokemon?.types[0].type.name]} relative`}>

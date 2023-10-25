@@ -88,14 +88,14 @@ const Pokedex = () => {
                     onSubmit={handleSubmit}
                     className="grid gap-4 justify-center"
                 >
-                    <div className="flex">
+                    <div className="flex ">
                         <input
                             name="pokemonName"
                             type="text"
                             placeholder="search a pokémon"
                             className="outline-none p-1 px-2"
                         />
-                        <button className="bg-[#D93F3F] text-white px-4">
+                        <button className="bg-[#D93F3F] text-white px-6">
                             Search
                         </button>
                     </div>
